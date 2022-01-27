@@ -3,9 +3,9 @@ module.exports = {
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
   clearMocks: true,
   collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "babel",
+  coverageDirectory: 'coverage',
+  coverageProvider: 'babel',
   transform: {
     '.+\\.ts$': 'ts-jest'
   }
-};
+}
