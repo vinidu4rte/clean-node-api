@@ -1,18 +1,7 @@
-// interface httpRequest {
-//   body: {
-//     email: string
-//     password: string
-//     passwordConfirmation: string
-//   }
-// }
-
-// interface httpResponse {
-//   statusCode: number
-//   message: string
-// }
+import { HttpRequest, HttpResponse } from '../protocols/http'
 
 export class SignUpController {
-  handle (httpRequest: any): any {
+  handle (httpRequest: HttpRequest): HttpResponse {
     const { email, password, passwordConfirmation } = httpRequest.body
     if (!email) {
       return { statusCode: 400, body: new Error('Missing param: email') }
@@ -20,6 +9,8 @@ export class SignUpController {
       return { statusCode: 400, body: new Error('Missing param: password') }
     } else if (!passwordConfirmation) {
       return { statusCode: 400, body: new Error('Missing param: password confirmation') }
+    } else {
+      return { statusCode: 200, body: {} }
     }
   }
 }
