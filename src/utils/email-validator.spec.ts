@@ -9,12 +9,12 @@ jest.mock('validator', () => ({
   }
 }))
 
-describe('Email Validator Adapter', () => {
-  const makeSut = (): EmailValidator => {
-    const sut = new EmailValidatorAdapter()
-    return sut
-  }
+const makeSut = (): EmailValidator => {
+  const sut = new EmailValidatorAdapter()
+  return sut
+}
 
+describe('Email Validator Adapter', () => {
   test('Should return false if validator returns false', () => {
     const sut = makeSut()
 
