@@ -157,7 +157,7 @@ describe('Testing SignUp Controller', () => {
     const { statusCode, body } = await sut.handle(httpRequest)
 
     expect(statusCode).toBe(200)
-    expect(body.account).toEqual({
+    expect(body).toEqual({
       id: 'valid_id',
       email: 'valid_email@email.com',
       password: 'valid_password'
