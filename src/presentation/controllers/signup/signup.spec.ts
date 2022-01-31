@@ -191,6 +191,7 @@ describe('Testing SignUp Controller', () => {
 
   test('Must return 200 if SignUpController is called with correct fields', async () => {
     const { sut } = makeSut()
+
     const httpRequest = {
       body: {
         email: 'email@email.com',
