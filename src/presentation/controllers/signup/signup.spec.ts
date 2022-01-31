@@ -144,6 +144,26 @@ describe('Testing SignUp Controller', () => {
     })
   })
 
+  test('Must return 200 if SignUpController is called with correct fields', () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        email: 'email@email.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    }
+
+    const { statusCode, body } = sut.handle(httpRequest)
+
+    expect(statusCode).toBe(200)
+    expect(body.account).toEqual({
+      id: 'valid_id',
+      email: 'valid_email@email.com',
+      password: 'valid_password'
+    })
+  })
+
   test('Must return status 500 if email throws a Error', () => {
     const { sut, emailValidatorStub } = makeSut()
     const httpRequest = {
