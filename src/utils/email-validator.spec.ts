@@ -9,7 +9,7 @@ describe('Email Validator Adapter', () => {
 
   test('Should return false if validator returns false', () => {
     const sut = makeSut()
-    const result = sut.isValid('invalid_email@email.com')
+    const result = sut.isValid('invalid_email')
     expect(result).toBe(false)
   })
 })
