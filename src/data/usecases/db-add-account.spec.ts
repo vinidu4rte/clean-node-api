@@ -19,7 +19,7 @@ describe('DbAddAccount', () => {
       async add (account: AddAccountModel): Promise<AccountModel> {
         return new Promise(resolve => resolve({
           id: 'valid_id',
-          email: 'valid_email',
+          email: 'valid_email@email.com',
           password: 'hash_pass'
         }))
       }
@@ -100,5 +100,21 @@ describe('DbAddAccount', () => {
 
     const promise = sut.add(account)
     await expect(promise).rejects.toThrow()
+  })
+
+  test('DbAddAccount should return an account on success', async () => {
+    const { sut } = makeSut()
+
+    const account = {
+      email: 'valid_email@email.com',
+      password: 'valid_password'
+    }
+
+    const returnedAccount = await sut.add(account)
+    expect(returnedAccount).toEqual({
+      id: 'valid_id',
+      email: 'valid_email@email.com',
+      password: 'hash_pass'
+    })
   })
 })

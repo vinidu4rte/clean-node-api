@@ -21,6 +21,6 @@ export class DbAddAccount implements AddAccount {
     // utilizar o assign faz uma copia do objeto e podemos modificar um valor que existe nele sobreescrevendo-o.
     const accountModel = await this.addAccountRepo.add(Object.assign({}, account, { password: hashedPassword }))
 
-    return new Promise(resolve => resolve(accountModel))
+    return accountModel
   }
 }
