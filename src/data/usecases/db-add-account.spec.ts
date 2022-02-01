@@ -1,4 +1,4 @@
-import { Encrypter } from './protocols/encrypter'
+import { Encrypter } from '../protocols/encrypter'
 import { DbAddAccount } from './db-add-account'
 
 describe('DbAddAccount', () => {
@@ -19,13 +19,13 @@ describe('DbAddAccount', () => {
 
   test('Ensure encrypter will receive password', async () => {
     const { sut, encrypterStub } = makeSut()
-    const encrypt = jest.spyOn(encrypterStub, 'encrypt')
+    const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
     const account = {
       email: 'valid_email@email.com',
       password: 'valid_password'
     }
 
     await sut.add(account)
-    expect(encrypt).toHaveBeenCalledWith('valid_password')
+    expect(encryptSpy).toHaveBeenCalledWith('valid_password')
   })
 })
