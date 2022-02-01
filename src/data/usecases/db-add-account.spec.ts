@@ -21,8 +21,8 @@ describe('DbAddAccount', () => {
   }
 
   test('Ensure encrypter will receive password', async () => {
-    const { sut, encrypterStub } = makeSut()
-    const encryptSpy = jest.spyOn(encrypterStub, 'encrypt')
+    const { sut } = makeSut()
+    const encryptSpy = jest.spyOn(sut.encrypter, 'encrypt')
     const account = {
       email: 'valid_email@email.com',
       password: 'valid_password'
